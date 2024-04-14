@@ -43,3 +43,8 @@
     margin: auto;
     
 }
+
+.anchor-link{
+    text-decoration: none;
+    color: white;
+}
