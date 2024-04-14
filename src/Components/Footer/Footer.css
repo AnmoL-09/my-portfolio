@@ -15,6 +15,11 @@
     max-width: 400px;
 }
 
+.footer-top-left img{
+    width: 120px;
+    height: 80pxpx;
+}
+
 .footer-top-right{
     display: flex;
     align-items: center;
