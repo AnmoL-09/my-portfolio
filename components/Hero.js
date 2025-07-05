@@ -1,13 +1,113 @@
-import React from "react";
+'use client'
+import React, { useRef, useEffect, useState } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
+  const astronautRef = useRef(null);
+  const heroRef = useRef(null);
+  const circleRef = useRef(null);
+  const [transitioning, setTransitioning] = useState(false);
+  const router = useRouter();
+
+  // Simulate scroll progress 
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => {
+    if (transitioning) return;
+    let progress = 0;
+    let lastTouchY = null;
+    const onWheel = (e) => {
+      if (transitioning) return;
+      progress += e.deltaY * 0.001;
+      progress = Math.max(0, Math.min(1, progress));
+      setScrollProgress(progress);
+      if (progress >= 1) {
+        setTransitioning(true);
+      }
+    };
+    const onTouchStart = (e) => {
+      if (e.touches && e.touches.length === 1) {
+        lastTouchY = e.touches[0].clientY;
+      }
+    };
+    const onTouchMove = (e) => {
+      if (transitioning || lastTouchY === null) return;
+      const touchY = e.touches[0].clientY;
+      const deltaY = lastTouchY - touchY;
+      progress += deltaY * 0.003; // Adjust sensitivity for mobile
+      progress = Math.max(0, Math.min(1, progress));
+      setScrollProgress(progress);
+      lastTouchY = touchY;
+      if (progress >= 1) {
+        setTransitioning(true);
+      }
+    };
+    const onTouchEnd = () => {
+      lastTouchY = null;
+    };
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('touchstart', onTouchStart, { passive: false });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('touchend', onTouchEnd, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [transitioning]);
+
+  // Astronaut rotation
+  useEffect(() => {
+    if (astronautRef.current) {
+      gsap.to(astronautRef.current, {
+        rotate: scrollProgress * 720, // 2 full rotations
+        duration: 1,
+        overwrite: true,
+        ease: 'power1.out',
+      });
+    }
+  }, [scrollProgress]);
+
+  // Circle transition animation
+  useEffect(() => {
+    if (transitioning && circleRef.current) {
+      gsap.to(circleRef.current, {
+        scale: 1300, // Large enough to cover viewport
+        duration: 0.8,
+        ease: 'power2.in',
+        onComplete: () => {
+            router.push('/about');
+        },
+      });
+    }
+  }, [transitioning, router]);
+
+  // Get astronaut position for circle
+  const [circlePos, setCirclePos] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    if (astronautRef.current) {
+      const rect = astronautRef.current.getBoundingClientRect();
+      setCirclePos({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      });
+    }
+  }, [transitioning]);
+
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center items-start bg-black text-[#a8a5a5] mt-0">
-      <div className="flex flex-row w-full max-w-7xl mx-auto items-center justify-center min-h-[60vh] -mt-30 gap-x-40">
+    <section
+      ref={heroRef}
+      className="relative min-h-[90vh] flex flex-col justify-center items-start bg-black text-[#a8a5a5]
+       mt-0 overflow-hidden px-4 sm:px-8"
+      style={{ height: '90vh' }}
+    >
+      <div className="flex flex-row w-full max-w-7xl mx-auto items-center justify-center min-h-[60vh] -mt-10 gap-x-4 sm:gap-x-40 flex-wrap">
         {/* Main Text */}
-        <div className="flex-1 flex flex-col justify-center items-start -ml-60 w-full text-[#717171]">
-          <p className="font-normal max-w-4xl w-full text-left mx-auto"
-           style={{ fontFamily: 'Poppins, sans-serif', fontSize: '24px', height: '140px', lineHeight: 'normal' }}>
+        <div className="flex-1 flex flex-col justify-center items-start w-full text-[#717171] mb-8 sm:mb-0 -ml-0 sm:-ml-60">
+          <p className="font-normal max-w-4xl w-full text-left mx-auto text-base sm:text-xl md:text-2xl"
+           style={{ fontFamily: 'Poppins, sans-serif', minHeight: '100px', lineHeight: 'normal' }}>
             Hey there! I'm a passionate 
             <span className="font-bold text-[#393939]"> Full-Stack Web Developer</span> with 
             <span className="font-bold text-[#393939]"> 3+ years </span>
@@ -17,7 +117,7 @@ export default function Hero() {
           </p>
         </div>
         {/* Social Links */}
-        <div className="flex flex-col items-center justify-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-6 pr-2 sm:pr-0 mt-4 sm:mt-0">
           <a href="https://www.linkedin.com/in/anmol-mahobiya/" target="_blank" rel="noopener noreferrer">
             {/* LinkedIn SVG */}
             <svg fill="#333333" viewBox="0 0 512 512" stroke="#333333" width="20" height="20">
@@ -46,12 +146,47 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      {/* Scroll Mouse Animation */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <div className="w-7 h-12 rounded-full border-2 border-[#a8a5a5] flex items-start justify-center relative">
-          <div className="w-1 h-3 bg-[#a8a5a5] rounded-full animate-scroll-mouse mt-2"></div>
+      {/* Floating Astronaut Animation */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20">
+        <div
+          ref={astronautRef}
+          style={{ willChange: "transform" }}
+        >
+          <div className="w-20 h-20 sm:w-[200px] sm:h-[200px] animate-float">
+            <Image src="/free_astronaut.png" alt="Floating Astronaut" width={80} height={80} className="block sm:hidden" priority />
+            <Image src="/free_astronaut.png" alt="Floating Astronaut" width={200} height={200} className="hidden sm:block" priority />
+          </div>
         </div>
       </div>
+      {/* Expanding Moon SVG Transition */}
+      {transitioning && (
+        <img
+          ref={circleRef}
+          src="/moon.svg"
+          alt="Moon Transition"
+          style={{
+            position: 'fixed',
+            left: circlePos.x - (window.innerWidth < 640 ? 40 : 100),
+            top: circlePos.y - (window.innerWidth < 640 ? 40 : 100),
+            width: window.innerWidth < 640 ? 80 : 200,
+            height: window.innerWidth < 640 ? 80 : 200,
+            zIndex: 9999,
+            transform: 'scale(1)',
+            pointerEvents: 'none',
+            transition: 'none',
+          }}
+        />
+      )}
+      <style>{`
+        @keyframes float {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-16px); }
+          100% { transform: translateY(0); }
+        }
+        .animate-float {
+          animation: float 2.5s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import AnimatedBackground from '@/components/AnimatedBackground';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -9,15 +10,11 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
+      <AnimatedBackground />
       <Navbar />
       <main className="overflow-x-hidden">
         <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Contact />
       </main>
-      <Footer />
     </>
   );
 }

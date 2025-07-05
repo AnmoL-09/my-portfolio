@@ -24,15 +24,14 @@ body {
   color: var(--foreground);
 }
 
+html{
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="%23666"/><ellipse cx="9" cy="9" rx="2" ry="1.2" fill="%23555"/><ellipse cx="17" cy="15" rx="1.2" ry="0.7" fill="%23555"/><ellipse cx="7" cy="16" rx="0.8" ry="0.5" fill="%23555"/></svg>') 12 12, auto;
+}
 @keyframes scroll-mouse {
   0% { opacity: 0; transform: translateY(0); }
   30% { opacity: 1; }
   60% { opacity: 1; transform: translateY(16px); }
   100% { opacity: 0; transform: translateY(24px); }
-}
-
-.animate-scroll-mouse {
-  animation: scroll-mouse 1.6s infinite;
 }
 
 /* Hide scrollbar for all browsers */
