@@ -1,10 +1,12 @@
 import Header from "@/components/Header";
+import Intro from "@/components/Intro";
 
 export default function Home() {
   return (
     <main className="min-h-screen text-white flex flex-col items-center">
-      <div className="w-full max-w-2xl mx-auto px-4 pt-30">
+      <div className="w-full max-w-3xl mx-auto px-4 pt-25">
         <Header />
+        <Intro />
       </div>
     </main>
   );

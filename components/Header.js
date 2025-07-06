@@ -2,18 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { MdArrowOutward } from "react-icons/md";
 import { FiSun, FiMoon } from "react-icons/fi";
-import {Newsreader, Comic_Neue} from 'next/font/google'
-
-const newsreader = Newsreader({
-    subsets:['serif'],
-    weight:'300',
-})
-
-const comicneue = Comic_Neue({
-    subsets: ['latin'],
-    weight: '400'
-})
-
+import Link from 'next/link';
+import { publicSans } from '@/lib/fonts';
 
 const Header = () => {
   const [theme, setTheme] = useState('dark');
@@ -39,18 +29,19 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full flex items-center justify-between py-2 px-6 md:px-1">
-      <div className="flex items-center gap-1">
-        <h1 className={`${comicneue.className} font-semibold text-[20px] tracking-wider underline transition-all 
-        duration-200 decoration-blue-600 decoration-2 underline-offset-4`}>
-          Anmol
+    <header className="w-full flex items-center justify-between  py-2 px-6 md:px-1">
+      <div className="flex items-center gap-0.5">
+        <h1 className={`${publicSans.className} font-normal text-[20px] 
+        tracking-wider underline transition-all cursor-pointer text-gray-300
+        duration-200 decoration-amber-600 decoration-2 underline-offset-4 hover:decoration-[3px]`}>
+          <Link href='https://github.com/AnmoL-09'>Anmol</Link>
         </h1>
-        <MdArrowOutward className='text-[18px] text-blue-600'/>
+        <MdArrowOutward className='text-[20px] mb-1.5 text-amber-600'/>
       </div>
       <button
         aria-label="Toggle dark mode"
         onClick={toggleTheme}
-        className="text-xl pl-2 rounded-full hover:bg-blue-900/20 transition cursor-pointer"
+        className="text-[22px] pl-2 rounded-full transition cursor-pointer"
       >
         {theme === 'dark' ? <FiSun/> : <FiMoon/>}
       </button>
