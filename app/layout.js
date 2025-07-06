@@ -1,4 +1,5 @@
 import "./globals.css";
+import { DotBackground } from "@/components/DotBackground";
 
 export const metadata = {
   title: 'Portfolio',
@@ -8,8 +9,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
+      <body className="relative min-h-screen">
+        <DotBackground />
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
