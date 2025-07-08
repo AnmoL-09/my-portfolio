@@ -2,7 +2,7 @@ import "./globals.css";
 import { DotBackground } from "@/components/DotBackground";
 
 export const metadata = {
-  title: 'Portfolio',
+  title: 'Anmol Mahobiya - Fullstack Developer',
   description: 'My Portfolio',
 };
 
