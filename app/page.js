@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Intro from "@/components/Intro";
 import Hero from "@/components/Hero";
 import Now from "../components/Now";
+import ConnectSection from "@/components/ConnectSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
         <Intro />
         <Hero />
         <Now />
+        <ConnectSection/>
+        <Footer/>
       </div>
     </main>
   );

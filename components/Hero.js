@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
 
 const svgIcons = [
@@ -17,22 +18,25 @@ const outerOrbitIcons = svgIcons.slice(7);
 
 const projects = [
   {
-    title: "Cellular Simulations",
+    title: "Trajectra 3D",
     color: "text-lime-300",
     arrow: "text-lime-300",
     desc: "GPU-accelerated cellular automata playground simulating artificial life patterns with customizable interactions.",
+    link: "https://github.com/AnmoL-09/Trajectra-3D",
   },
   {
     title: "Edge Trending API",
     color: "text-pink-400",
     arrow: "text-pink-400",
     desc: "Lightweight Edge REST API that scrapes, caches, and returns trending videos per query.",
+    link: "https://github.com/AnmoL-09/Trajectra-3D",
   },
   {
     title: "Discord Movie Torrent Bot",
     color: "text-cyan-300",
     arrow: "text-cyan-300",
     desc: "Discord TypeScript bot to search, queue, and manage movie torrents with slash commands integration.",
+    link: "https://github.com/AnmoL-09/Trajectra-3D",
   },
 ];
 
@@ -151,7 +155,7 @@ const Hero = () => {
           {projects.map((proj, i) => (
             <div key={i}>
               <div className="flex items-center gap-2">
-                <span className={`font-bold ${proj.color}`}>{proj.title}</span>
+                <Link href={proj.link} className={`font-bold ${proj.color}`}>{proj.title}</Link>
                 <span className={`text-[16px] ${proj.arrow}`}>→</span>
                 <span className="text-xs text-gray-400">&lt;/&gt;</span>
               </div>
