@@ -21,23 +21,26 @@ const projects = [
     title: "Trajectra 3D",
     color: "text-lime-300",
     arrow: "text-lime-300",
+    underline: "hover:border-b-[1px] hover:border-lime-300",
     desc: "GPU-accelerated cellular automata playground simulating artificial life patterns with customizable interactions.",
     link: "https://github.com/AnmoL-09/Trajectra-3D",
   },
   {
-    title: "Edge Trending API",
-    color: "text-pink-400",
-    arrow: "text-pink-400",
-    desc: "Lightweight Edge REST API that scrapes, caches, and returns trending videos per query.",
-    link: "https://github.com/AnmoL-09/Trajectra-3D",
+    title: "JanSathi – Digital Citizen Services",
+    color: "text-blue-300",
+    arrow: "text-blue-300",
+    underline: "hover:border-b-[1px] hover:border-blue-300",
+    desc: "AI-powered platform simplifying access to RTI, grievances, and government schemes with bilingual support and mobile-first design.",
+    link: "https://github.com/AnmoL-09/Jansathi_ByteBenders",    
   },
   {
-    title: "Discord Movie Torrent Bot",
-    color: "text-cyan-300",
-    arrow: "text-cyan-300",
-    desc: "Discord TypeScript bot to search, queue, and manage movie torrents with slash commands integration.",
-    link: "https://github.com/AnmoL-09/Trajectra-3D",
-  },
+    title: "FinSmart – Financial Management",
+    color: "text-emerald-300",
+    arrow: "text-emerald-300",
+    underline: "hover:border-b-[1px] hover:border-emerald-300",
+    desc: "AI-powered financial manager for tracking expenses, planning budgets, and gaining actionable insights with multi-account and multi-currency support.",
+    link: "https://github.com/sumant09876/finsmart",
+  },    
 ];
 
 const orbitIconStyle = (angle, radius) => ({
@@ -155,8 +158,8 @@ const Hero = () => {
           {projects.map((proj, i) => (
             <div key={i}>
               <div className="flex items-center gap-2">
-                <Link href={proj.link} className={`font-bold ${proj.color}`}>{proj.title}</Link>
-                <span className={`text-[16px] ${proj.arrow}`}>→</span>
+                <Link href={proj.link} className={`font-bold ${proj.color} ${proj.underline}`}>{proj.title}</Link>
+                <span className={`text-[20px] ${proj.arrow}`}>→</span>
                 <span className="text-xs text-gray-400">&lt;/&gt;</span>
               </div>
               <p className="text-gray-400 text-[15px] mt-1 font-mono whitespace-pre-line">{proj.desc}</p>

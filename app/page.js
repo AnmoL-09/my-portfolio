@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Now from "../components/Now";
 import ConnectSection from "@/components/ConnectSection";
 import Footer from "@/components/Footer";
+import ExperienceSection from "@/components/ExperienceSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Intro />
         <Hero />
         <Now />
+        <ExperienceSection/>
         <ConnectSection/>
         <Footer/>
       </div>
