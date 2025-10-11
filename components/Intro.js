@@ -9,9 +9,9 @@ const Intro = () => (
         Bringing ideas to life.
       </span>
       <span className="ml-2 text-gray-300">
-        Full-stack Software Engineer based near Fort Lauderdale, 
-        specialized in the development of modern websites, apps, tools, 
-        and everything <br/>in between.
+        Full-stack Software Engineer based in India, 
+        specialized in <br/> the development of modern websites, apps, tools, 
+        and everything in between.
       </span>
     </p>
   </section>

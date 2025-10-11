@@ -1,7 +1,6 @@
 import "./globals.css";
 import { DotBackground } from "@/components/DotBackground";
 import { Great_Vibes } from 'next/font/google'
-import './globals.css'
 import LoadingScreen from '@/components/LoadingScreen'
 import SpiritedAwayAnimation from '@/components/SpiritedAwayAnimation';
 

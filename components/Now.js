@@ -21,7 +21,7 @@ const Now = () => (
     >
       Right now, I just want to code. 
       I want to build things, try out new tools,
-       dig deeper into the Linux ecosystem,
+       dig deeper into the world of programming and technology,
         and understand how things work under the hood. 
         It's exciting to keep learning and see how all 
         the pieces fit together.
