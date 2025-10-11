@@ -3,6 +3,8 @@ import { DotBackground } from "@/components/DotBackground";
 import { Great_Vibes } from 'next/font/google'
 import './globals.css'
 import LoadingScreen from '@/components/LoadingScreen'
+import SpiritedAwayAnimation from '@/components/SpiritedAwayAnimation';
+
 
 const greatVibes = Great_Vibes({
   weight: '400',
@@ -19,6 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="relative min-h-screen">
         <DotBackground />
+        <SpiritedAwayAnimation />
         <div className="relative z-10">
           <LoadingScreen />
           {children}
