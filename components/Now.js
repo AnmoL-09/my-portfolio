@@ -12,7 +12,7 @@ const Now = () => (
       I try to stay aware that {' '}
     <span className={`${newsreader.className} italic font-semibold text-white`}> 
       everything around me 
-      is the result of someone else's time and effort.
+      is the result of someone else&apos;s time and effort.
     </span>
     </p>
     
@@ -23,7 +23,7 @@ const Now = () => (
       I want to build things, try out new tools,
        dig deeper into the world of programming and technology,
         and understand how things work under the hood. 
-        It's exciting to keep learning and see how all 
+        It&apos;s exciting to keep learning and see how all 
         the pieces fit together.
     </p>
   </section>
