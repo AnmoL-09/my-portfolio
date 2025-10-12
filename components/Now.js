@@ -3,7 +3,7 @@ import { newsreader } from "@/lib/fonts";
 
 const Now = () => (
   <section className="mt-12 mb-8 px-2 md:px-0">
-    <h2 className="text-2xl font-semibold text-gray-200 mb-4">Now</h2>
+    <h2 className="text-2xl font-semibold  mb-4 text-[#0aff99]">Now</h2>
     <p className="text-gray-300 text-[17px] leading-relaxed mb-5"
     style={{ fontFamily: "var(--font-mono)" }}
     >

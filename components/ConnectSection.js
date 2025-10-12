@@ -5,7 +5,7 @@ import { MdArrowOutward } from "react-icons/md";
 const ConnectSection = () => {
     return(
         <div className="flex flex-col mb-32">
-            <h1 className="text-2xl font-semibold text-gray-200 mb-4">Connect</h1>
+            <h1 className="text-2xl font-semibold text-[#be0aff] mb-4">Connect</h1>
             <a className="flex gap-1.5" href="mailto:anmolmahobiya092@gmail.com"
                 style={{ fontFamily: "var(--font-mono)"}}
             >
